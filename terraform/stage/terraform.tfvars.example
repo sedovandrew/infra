@@ -1,0 +1,6 @@
+project          = ""
+region = "europe-west1"
+public_key_path  = "~/.ssh/appuser.pub"
+private_key_path = "~/.ssh/appuser"
+db_disk_image    = ""
+app_disk_image   = ""
