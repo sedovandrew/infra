@@ -6,3 +6,4 @@ environment.sh
 *.tfvars
 .terraform/
 .vagrant
+*.retry
