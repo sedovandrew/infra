@@ -50,6 +50,29 @@
    terraform apply
    ```
 
+## Create basic images
+
+Because Terraform manages the firewall rule for the ssh connection, create   
+infrastructure using Terraform before starting the preparation of images using Packer.
+
+### Image with MongoDB
+
+You can create a basic image with MongoDB like this:
+
+```bash
+cd packer
+packer build db.json
+```
+
+### Image with Ruby
+
+Image with Ruby for application:
+
+```bash
+cd packer
+packer build app.json
+```
+
 Done! :-)
 
 -----
