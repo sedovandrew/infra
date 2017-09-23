@@ -4,6 +4,12 @@
 
 ### Initializaion Google Cloud Storage for remote backend
 
+The modules used here:
+
+* bucket - Create a Google Cloud Starage for storing state files.
+
+Create storage:
+
 1. Enter the folder `terraform/state`
 
 2. Copy file terraform.tfvars.example to terraform.tfvars:   
@@ -25,6 +31,14 @@
    ```
 
 ### Create infrastructure
+
+The modules used here:
+
+* app - Create a virtual machine with Ruby.
+* db  - Creating a virtual machine with MongoDB. 
+* vpc - Configure the firewall rule for ssh access.
+
+Create infrastructure:
 
 1. For stage infrastructue enter the folder `terraform/stage`, for production - `terraform/prod`
 
