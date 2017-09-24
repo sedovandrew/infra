@@ -2,6 +2,7 @@
   "variables": {
     "project_id": "{{env `INFRA_PROJECT`}}",
     "source_image": "ubuntu-1604-xenial-v20170815a",
+    "image_family": "reddit-app-base",
     "zone": "{{env `INFRA_ZONE`}}",
     "machine_type": "f1-micro",
     "disk_size": "10",
@@ -12,7 +13,8 @@
     {
       "type": "googlecompute",
       "project_id": "{{user `project_id`}}",
-      "image_name": "reddit-app-base-{{timestamp}}",
+      "image_name": "{{user `image_family`}}-{{timestamp}}",
+      "image_family": "{{user `image_family`}}",
       "image_description": "Base image for reddit application",
       "source_image": "{{user `source_image`}}",
       "zone": "{{user `zone`}}",
