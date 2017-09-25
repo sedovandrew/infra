@@ -6,13 +6,13 @@
 
 1. Enter the folder `terraform/state`
 
-2. Copy file terraform.tfvars.example to terraform.tfvars:   
+2. Copy file terraform.tfvars.example to terraform.tfvars:
 
    ```bash
    cp terraform.tfvars.example terraform.tfvars
    ```
 
-3. Edit this file:   
+3. Edit this file:
 
    ```bash
    vim terraform.tfvars
@@ -52,7 +52,7 @@
 
 ## Create basic images
 
-Because Terraform manages the firewall rule for the ssh connection, create   
+Because Terraform manages the firewall rule for the ssh connection, create
 infrastructure using Terraform before starting the preparation of images using Packer.
 
 ### Image with MongoDB
@@ -60,8 +60,7 @@ infrastructure using Terraform before starting the preparation of images using P
 You can create a basic image with MongoDB like this:
 
 ```bash
-cd packer
-packer build db.json
+packer build packer/db.json
 ```
 
 ### Image with Ruby
@@ -69,8 +68,7 @@ packer build db.json
 Image with Ruby for application:
 
 ```bash
-cd packer
-packer build app.json
+packer build packer/app.json
 ```
 
 Done! :-)
