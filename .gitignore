@@ -5,3 +5,4 @@ environment.sh
 *.tfstate.backup
 *.tfvars
 .terraform/
+.vagrant

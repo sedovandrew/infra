@@ -12,13 +12,13 @@ Create storage:
 
 1. Enter the folder `terraform/state`
 
-2. Copy file terraform.tfvars.example to terraform.tfvars:   
+2. Copy file terraform.tfvars.example to terraform.tfvars:
 
    ```bash
    cp terraform.tfvars.example terraform.tfvars
    ```
 
-3. Edit this file:   
+3. Edit this file:
 
    ```bash
    vim terraform.tfvars
@@ -63,6 +63,27 @@ Create infrastructure:
    ```bash
    terraform apply
    ```
+
+## Create basic images
+
+Because Terraform manages the firewall rule for the ssh connection, create
+infrastructure using Terraform before starting the preparation of images using Packer.
+
+### Image with MongoDB
+
+You can create a basic image with MongoDB like this:
+
+```bash
+packer build packer/db.json
+```
+
+### Image with Ruby
+
+Image with Ruby for application:
+
+```bash
+packer build packer/app.json
+```
 
 Done! :-)
 
