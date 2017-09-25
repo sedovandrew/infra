@@ -1,5 +1,16 @@
 # Infrastructure repository
 
+* [Create infrastructure with Terraform](#create-infrastructure-with-terraform)
+  * [Initializaion Google Cloud Storage for remote backend](#initializaion-google-cloud-storage-for-remote-backend)
+  * [Create infrastructure](#create-infrastructure)
+* [Create basic images with Packer](#create-basic-images-with-packer)
+  * [Image with MongoDB](#image-with-mongodb)
+  * [Image with Ruby](#image-with-ruby)
+* [Configuration instances with Ansible](#configuration-instances-with-ansible)
+  * [Configuration dynamic inventory](#configuration-dynamic-inventory)
+  * [Check configuration](#check-configuration)
+  * [Apply configuration](#apply-configuration)
+
 ## Create infrastructure with Terraform
 
 ### Initializaion Google Cloud Storage for remote backend
@@ -64,7 +75,7 @@ Create infrastructure:
    terraform apply
    ```
 
-## Create basic images
+## Create basic images with Packer
 
 Because Terraform manages the firewall rule for the ssh connection, create
 infrastructure using Terraform before starting the preparation of images using Packer.
@@ -83,6 +94,48 @@ Image with Ruby for application:
 
 ```bash
 packer build packer/app.json
+```
+
+## Configuration instances with Ansible
+
+Ansible is used to configure virtual machines.
+
+### Configuration dynamic inventory
+
+Install the package as specified [here](http://docs.ansible.com/ansible/latest/guide_gce.html#introduction):
+
+```bash
+pip install apache-libcloud
+```
+
+Copy example file with configuration:
+
+```bash
+cd ansible/inventory
+cp secrets.py.example secrets.py
+```
+
+Edit `secrets.py` with this documentation:
+
+* [Credentials](http://docs.ansible.com/ansible/latest/guide_gce.html#credentials)
+* [Configuring Modules with secrets.py](http://docs.ansible.com/ansible/latest/guide_gce.html#configuring-modules-with-secrets-py)
+
+### Check configuration
+
+```bash
+cd ansible
+ansible-playbook reddit_app.yml --limit reddit-db --tags db-tag --check
+ansible-playbook reddit_app.yml --limit reddit-app --tags app-tag --check
+```
+
+### Apply configuration
+
+You can do it this way:
+
+```bash
+cd ansible
+ansible-playbook reddit_app.yml --limit reddit-db --tags db-tag
+ansible-playbook reddit_app.yml --limit reddit-app --tags app-tag
 ```
 
 Done! :-)

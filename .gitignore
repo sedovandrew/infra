@@ -6,3 +6,7 @@ environment.sh
 *.tfvars
 .terraform/
 .vagrant
+*.retry
+ansible/inventory/secrets.py
+ansible/inventory/*.json
+*.pyc
