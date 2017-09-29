@@ -46,7 +46,7 @@ Create storage:
 The modules used here:
 
 * app - Create a virtual machine with Ruby.
-* db  - Creating a virtual machine with MongoDB. 
+* db  - Creating a virtual machine with MongoDB.
 * vpc - Configure the firewall rule for ssh access.
 
 Create infrastructure:
@@ -100,6 +100,14 @@ packer build packer/app.json
 
 Ansible is used to configure virtual machines.
 
+### Requirements
+
+Install community roles:
+
+```bash
+ansible-galaxy install -r ansible/requirements.yml
+```
+
 ### Configuration dynamic inventory
 
 Install the package as specified [here](http://docs.ansible.com/ansible/latest/guide_gce.html#introduction):
@@ -111,11 +119,11 @@ pip install apache-libcloud
 Copy example file with configuration:
 
 ```bash
-cd ansible/inventory
-cp secrets.py.example secrets.py
+cp ansible/environments/stage/secrets.py.example ansible/environments/stage/secrets.py
+cp ansible/environments/prod/secrets.py.example ansible/environments/prod/secrets.py
 ```
 
-Edit `secrets.py` with this documentation:
+Edit `secrets.py` for stage and prod environments with this documentation:
 
 * [Credentials](http://docs.ansible.com/ansible/latest/guide_gce.html#credentials)
 * [Configuring Modules with secrets.py](http://docs.ansible.com/ansible/latest/guide_gce.html#configuring-modules-with-secrets-py)
@@ -124,8 +132,7 @@ Edit `secrets.py` with this documentation:
 
 ```bash
 cd ansible
-ansible-playbook reddit_app.yml --limit reddit-db --tags db-tag --check
-ansible-playbook reddit_app.yml --limit reddit-app --tags app-tag --check
+ansible-playbook site.yml --check
 ```
 
 ### Apply configuration
@@ -134,8 +141,7 @@ You can do it this way:
 
 ```bash
 cd ansible
-ansible-playbook reddit_app.yml --limit reddit-db --tags db-tag
-ansible-playbook reddit_app.yml --limit reddit-app --tags app-tag
+ansible-playbook site.yml
 ```
 
 Done! :-)

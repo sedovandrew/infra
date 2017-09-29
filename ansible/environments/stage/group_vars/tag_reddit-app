@@ -1,1 +1,12 @@
 db_host: "{{ hostvars['reddit-db']['gce_private_ip'] }}"
+
+nginx_sites:
+  reddit:
+    - listen 80
+    - location / {
+        proxy_pass http://127.0.0.1:9292;
+      }
+
+nginx_configs:
+  proxy:
+    - proxy_set_header Host $host
