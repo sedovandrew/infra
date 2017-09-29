@@ -4,4 +4,5 @@ public_key_path  = "~/.ssh/appuser.pub"
 private_key_path = "~/.ssh/appuser"
 db_disk_image    = "reddit-db-base"
 app_disk_image   = "reddit-app-base"
+app_port         = "80"
 ssh_allow_ip     = ["0.0.0.0/0"]

@@ -7,6 +7,6 @@ environment.sh
 .terraform/
 .vagrant
 *.retry
-ansible/inventory/secrets.py
-ansible/inventory/*.json
+ansible/environments/*/secrets.py
+ansible/environments/*/*.json
 *.pyc
