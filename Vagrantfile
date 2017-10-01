@@ -9,7 +9,8 @@ Vagrant.configure("2") do |config|
     db.vm.hostname = "db"
     db.vm.synced_folder ".", "/vagrant", disabled: true
     db.vm.provision "ansible" do |ansible|
-      ansible.playbook = "packer/ansible/packer_db.yml"
+      ansible.playbook = "ansible/packer_db.yml"
+      ansible.tags = "install"
     end
   end
 
