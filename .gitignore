@@ -11,3 +11,5 @@ ansible/environments/*/secrets.py
 ansible/environments/*/*.json
 *.pyc
 *.log
+.molecule
+.cache
