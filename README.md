@@ -7,9 +7,11 @@
   * [Image with MongoDB](#image-with-mongodb)
   * [Image with Ruby](#image-with-ruby)
 * [Configuration instances with Ansible](#configuration-instances-with-ansible)
+  * [Requirements](#requirements)
   * [Configuration dynamic inventory](#configuration-dynamic-inventory)
   * [Check configuration](#check-configuration)
   * [Apply configuration](#apply-configuration)
+* [Local development](#local-development)
 
 ## Create infrastructure with Terraform
 
@@ -144,66 +146,15 @@ cd ansible
 ansible-playbook site.yml
 ```
 
-Done! :-)
+## Local development
 
------
+You cat run two virturl machines for local development.
+First, install [Vagrant](https://www.vagrantup.com/docs/installation/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+And then:
 
-# Other methods
+```bash
+cd ansible
+vagrant up
+```
 
-You should use the previous method.
-
-## Run the application (first method)
-
-To start the virtual machine with the application, do the following:
-
-    $ ./create_instance.sh
-
-## Run the application from base image (second method)
-
-### Create a basic image for the application
-
-Set environment variables:
-
-    INFRA_PROJECT - project ID
-    INFRA_ZONE    - zone
-
-Create base image:
-
-    $ cd packer
-    $ packer build ubuntu16.json
-
-### Run the application from base image
-
-Set environment variable:
-
-    INFRA_IMAGE - name of base image
-
-Create virtual machine:
-
-    $ cd ..
-    $ ./create_instance_from_reddit-base.sh
-
-## Run baked application (third method)
-
-### Create image with application
-
-Set environment variables:
-
-    INFRA_PROJECT - project ID
-    INFRA_ZONE    - zone
-
-Create image:
-
-    $ cd packer
-    $ packer build immutable.json
-
-### Run baked application from image
-
-Set environment variable:
-
-    INFRA_IMAGE - name of image with application
-
-Create machine:
-
-    $ cd ..
-    $ ./create_instance_from_reddit-app.sh
+After the virtual machines are loaded, you can access the service by following the link: [http://10.10.10.20/](http://10.10.10.20/)
