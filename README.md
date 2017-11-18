@@ -11,6 +11,7 @@
   * [Configuration dynamic inventory](#configuration-dynamic-inventory)
   * [Check configuration](#check-configuration)
   * [Apply configuration](#apply-configuration)
+* [Local development](#local-development)
 
 ## Create infrastructure with Terraform
 
@@ -145,5 +146,15 @@ cd ansible
 ansible-playbook site.yml
 ```
 
-Done! :-)
+## Local development
 
+You cat run two virturl machines for local development.
+First, install [Vagrant](https://www.vagrantup.com/docs/installation/) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+And then:
+
+```bash
+cd ansible
+vagrant up
+```
+
+After the virtual machines are loaded, you can access the service by following the link: [http://10.10.10.20/](http://10.10.10.20/)
